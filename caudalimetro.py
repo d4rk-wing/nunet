@@ -2,8 +2,7 @@ from machine import Pin, Timer
 import alerts
 import oled
 import utime
-#import firebase
-import thinkspeak
+import firebase
 
 # Initializing water sensor
 s = Pin(25, Pin.IN)
@@ -55,8 +54,7 @@ def checkC():
         print(str(acumulado)+" - "+str(ciclos))
 
         if ciclos >= 5 and acumulado != 0:
-            # firebase.send_fb(acumulado,location)
-            thinkspeak.send_thinkspeak(acumulado,location)
+            firebase.send_fb(acumulado,location)
             acumulado = 0
             ciclos = 0
     
